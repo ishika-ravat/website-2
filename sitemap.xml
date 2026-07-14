@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ishika-ravat.github.io/website-2/source-2.html</loc>
+    <lastmod>2026-07-14T16:55:27.778Z</lastmod>
+  </url>
+  <url>
     <loc>https://ishika-ravat.github.io/website-2/about.html</loc>
     <lastmod>2026-07-14T16:47:23.366Z</lastmod>
   </url>
   <url>
+    <loc>https://ishika-ravat.github.io/website-2/make_plot.R.html</loc>
+    <lastmod>2026-07-14T17:09:17.374Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ishika-ravat.github.io/website-2/source-1.html</loc>
+    <lastmod>2026-07-14T16:55:04.474Z</lastmod>
+  </url>
+  <url>
     <loc>https://ishika-ravat.github.io/website-2/index.html</loc>
-    <lastmod>2026-07-14T16:43:02.785Z</lastmod>
+    <lastmod>2026-07-14T17:11:30.728Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ishika-ravat.github.io/website-2/process_data.R.html</loc>
+    <lastmod>2026-07-14T17:05:38.711Z</lastmod>
   </url>
 </urlset>

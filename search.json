@@ -14,10 +14,24 @@
     "text": "My name is Ishika Ravat and I am from North Carolina.\nKane’s Free Data Science Bootcamp"
   },
   {
+    "objectID": "make_plot.R.html",
+    "href": "make_plot.R.html",
+    "title": "make_plot.R",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.3     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n# Read the preprocessed billboard dataset from the RDS file\ntop_songs &lt;- read_rds(\"top_songs.rds\")\n\n# Build the trajectory plot and assign it to billboard_plot\nbillboard_plot &lt;- ggplot(top_songs, aes(x = week, y = rank, color = track)) +\n  geom_line(linewidth = 1) +\n  geom_point(size = 1.5) +\n  scale_y_reverse(limits = c(100, 1)) +\n  theme_minimal() +\n  labs(\n    title = \"Billboard Rank Trajectory of Longevity Hits (2000)\",\n    subtitle = \"Songs that spent 45 or more weeks on the Hot 100\",\n    x = \"Week on the Chart\",\n    y = \"Rank (1 is the top rank)\",\n    color = \"Song Title\"\n  )\n\n# Save the plot as a PNG image file\nggsave(\"billboard_plot.png\", plot = billboard_plot)\n\nSaving 7 x 5 in image"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Billboard Graphic",
     "section": "",
     "text": "── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.3     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+  },
+  {
+    "objectID": "process_data.R.html",
+    "href": "process_data.R.html",
+    "title": "process_data.R",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.3     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n# Pivot the billboard data from wide to long, convert week numbers to integers,\n# filter for songs on the chart for at least 45 weeks, and assign the result to top_songs\ntop_songs &lt;- billboard |&gt;\n  pivot_longer(\n    cols = starts_with(\"wk\"),\n    names_to = \"week\",\n    names_prefix = \"wk\",\n    values_to = \"rank\",\n    values_drop_na = TRUE\n  ) |&gt;\n  mutate(week = as.integer(week)) |&gt;\n  group_by(artist, track) |&gt;\n  filter(n() &gt;= 45) |&gt;\n  ungroup()\n\n# Save the dataset to an RDS file\nwrite_rds(top_songs, \"top_songs.rds\")\n\nwrite_rds(top_songs, file = “clean_data.rds”)"
   }
 ]
